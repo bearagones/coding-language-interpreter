@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class DumpCode extends ByteCode {
     String value;
 
-    // args -> "ON" or "OFF"
+    // Dump ByteCode has 1 arg -> "ON" or "OFF"
     @Override
     public void init(ArrayList<String> args) {
         value = args.get(0);
