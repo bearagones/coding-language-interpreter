@@ -1,5 +1,8 @@
 package interpreter.virtualmachine;
 
+import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.LitCode;
+
 import java.util.Stack;
 
 public class VirtualMachine {
@@ -14,5 +17,8 @@ public class VirtualMachine {
         this.program = program;
     }
 
-    // add executeProgram method
+    public void executeProgram() {
+        ByteCode bc = new LitCode();
+        System.out.println(bc);;
+    }
 }
