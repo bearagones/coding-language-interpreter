@@ -1,5 +1,7 @@
 package interpreter.virtualmachine;
 
+import interpreter.bytecode.ByteCode;
+
 import java.util.ArrayList;
 
 public class Program {
@@ -21,6 +23,10 @@ public class Program {
      * HINT: make note what type of data-structure ByteCodes are stored in.
      */
     public void resolveAddress() {
+        // two for loops (not nested)
+        // one pass through the arraylist keeping track of label codes and their labels
+        // second pass through the arraylist look for call, goto, and falsebranch code and do the following:
+        // look at stored label codes and find the one that has the matching label value
 
     }
 
