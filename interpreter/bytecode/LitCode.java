@@ -20,8 +20,8 @@ public class LitCode extends ByteCode {
     // Lit ByteCode pushes only 1 value on top of the runtime stack
     @Override
     public void execute(VirtualMachine vm) {
-        if (id.equals("")) {
-            vm.push(value);
+        if (this.id.equals("")) {
+            vm.push(this.value);
         } else {
             vm.push(0);
         }
@@ -29,9 +29,9 @@ public class LitCode extends ByteCode {
 
     @Override
     public String toString() {
-        String base = "LIT " + value;
-        if (id != null) {
-            base += " int " + id;
+        String base = "LIT " + this.value;
+        if (this.id != null) {
+            base += " int " + this.id;
         }
         return base;
     }
