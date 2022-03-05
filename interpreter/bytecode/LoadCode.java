@@ -17,7 +17,7 @@ public class LoadCode extends ByteCode {
         }
     }
 
-    // Load ByteCode moves values from offset to the top of the stack 
+    // Load ByteCode moves values from offset to the top of the stack
     @Override
     public void execute(VirtualMachine vm) {
         vm.push(vm.load(offset));
