@@ -5,21 +5,26 @@ import interpreter.virtualmachine.VirtualMachine;
 import java.util.ArrayList;
 
 public class CallCode extends ByteCode {
-    String value;
+    String label;
+    int address;
+    int value;
 
+    // Call ByteCode has 1 arg -> label to jump to
     @Override
     public void init(ArrayList<String> args) {
-        this.value = args.get(0);
+        this.label = args.get(0);
     }
 
+    // Call ByteCode jumps to the specified label
     @Override
     public void execute(VirtualMachine vm) {
         vm.pushReturnAddress(vm.getProgramCounter());
-        vm.setProgramCounter(Integer.parseInt());
+        address = vm.getProgramCounter();
+        value = vm.peek();
     }
 
     @Override
     public String toString() {
-        return "CALL " + value;
+        return "CALL " + this.label;
     }
 }
