@@ -5,20 +5,22 @@ import interpreter.virtualmachine.VirtualMachine;
 import java.util.ArrayList;
 
 public class ArgsCode extends ByteCode {
-    int value;
+    int numArgs;
 
+    // Args ByteCode has 1 arg -> number of arguments in the activation frame
     @Override
     public void init(ArrayList<String> args) {
-        value = Integer.parseInt(args.get(0));
+        this.numArgs = Integer.parseInt(args.get(0));
     }
 
+    // Args ByteCode pushes starting index of new frame to the framePointer stack
     @Override
     public void execute(VirtualMachine vm) {
-        vm.newFrameAt(value);
+        vm.newFrameAt(this.numArgs);
     }
 
     @Override
     public String toString() {
-        return "ARGS " + value;
+        return "ARGS " + this.numArgs;
     }
 }
