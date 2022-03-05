@@ -19,8 +19,8 @@ public class CallCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         vm.pushReturnAddress(vm.getProgramCounter());
-        address = vm.getProgramCounter();
-        value = vm.peek();
+        this.address = vm.getProgramCounter();
+        this.value = vm.peek();
     }
 
     @Override
