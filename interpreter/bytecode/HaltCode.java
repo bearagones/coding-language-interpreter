@@ -17,7 +17,6 @@ public class HaltCode extends ByteCode {
         vm.haltProgram();
     }
 
-    // Prints out "HALT"
     @Override
     public String toString() {
         return "HALT";
