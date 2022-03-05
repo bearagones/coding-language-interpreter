@@ -26,7 +26,7 @@ public class LitCode extends ByteCode {
             vm.push(0);
         }
     }
-    
+
     @Override
     public String toString() {
         String base = "LIT " + value;
