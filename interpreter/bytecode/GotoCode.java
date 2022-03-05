@@ -18,7 +18,7 @@ public class GotoCode extends ByteCode {
     public void execute(VirtualMachine vm) {
         vm.setProgramCounter(Integer.parseInt(this.label));
     }
-    
+
     @Override
     public String toString() {
         return "GOTO " + this.label;
