@@ -8,6 +8,7 @@ public class LoadCode extends ByteCode {
     int offset;
     String id;
 
+    // Load ByteCode has 1 or 2 args -> a value and (if present) an id of the value
     @Override
     public void init(ArrayList<String> args) {
         this.offset = Integer.parseInt(args.get(0));
@@ -16,6 +17,7 @@ public class LoadCode extends ByteCode {
         }
     }
 
+    // Load ByteCode moves values from offset to the top of the stack 
     @Override
     public void execute(VirtualMachine vm) {
         vm.push(vm.load(offset));
