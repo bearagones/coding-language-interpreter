@@ -8,6 +8,8 @@ public class ReturnCode extends ByteCode {
     int programCounter;
     int temp;
     String label;
+    private int address;
+    private String id;
 
     // Return ByteCode has 0 or 1 arg -> either nothing or a label
     @Override
@@ -20,16 +22,10 @@ public class ReturnCode extends ByteCode {
     // Return ByteCode returns from functions and puts them in the correct position in the runtime stack
     @Override
     public void execute(VirtualMachine vm) {
-        this.programCounter = vm.getReturnAddress();
-        this.temp = vm.pop();
-
-        while (vm.stackSize() > vm.peek()) {
-             vm.pop();
-        }
-
-        vm.pop();
-        vm.push(this.temp);
-        vm.setProgramCounter(this.programCounter);
+        temp = vm.peek();
+        vm.popFrame();
+        vm.push(temp);
+        vm.setProgramCounter(vm.popReturnAddress());
     }
 
     @Override
@@ -39,5 +35,17 @@ public class ReturnCode extends ByteCode {
         } else {
             return "RETURN";
         }
+    }
+
+    public void setAddress(int address) {
+        this.address = address;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getLabel() {
+        return label;
     }
 }

@@ -20,12 +20,12 @@ public class LoadCode extends ByteCode {
     // Load ByteCode moves values from offset to the top of the stack
     @Override
     public void execute(VirtualMachine vm) {
-        vm.push(vm.load(offset));
+        vm.load(offset);
     }
 
     @Override
     public String toString() {
-        String base = "LIT " + this.offset;
+        String base = "LOAD " + this.offset;
         if (this.id != null) {
             base += " int " + this.id;
         }

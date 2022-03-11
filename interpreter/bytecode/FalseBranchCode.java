@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class FalseBranchCode extends ByteCode {
     String label;
-    int value;
 
     // FalseBranch ByteCode has 1 arg -> label to jump to
     @Override
@@ -18,12 +17,20 @@ public class FalseBranchCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         if (vm.pop() == 0) {
-            vm.setProgramCounter(Integer.parseInt(label));
+            vm.jumpTo(Integer.parseInt(label));
         }
     }
 
     @Override
     public String toString() {
         return "FALSEBRANCH " + this.label;
+    }
+
+    public void setLabel(int index) {
+        this.label = Integer.toString(index);
+    }
+
+    public String getLabel() {
+        return label;
     }
 }
