@@ -58,15 +58,19 @@ public class ByteCodeLoader extends Object {
                 // create new instance of bytecode using constructor
                 bc = (ByteCode) classBlueprint.getDeclaredConstructor().newInstance();
                 // grab remaining arguments
+                for (int i = 1; i < items.length; i++) {
+                    args.add(items[i]);
+                }
                 // pass args to bytecode init function
                 bc.init(args);
                 // add bytecode to program
+                program.addCode(bc);
             }
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex);
             System.exit(255);
-        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException ex) {
+            System.out.println(ex);
         }
 
         program.resolveAddress();
