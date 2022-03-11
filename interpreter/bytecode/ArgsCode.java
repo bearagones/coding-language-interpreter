@@ -5,7 +5,7 @@ import interpreter.virtualmachine.VirtualMachine;
 import java.util.ArrayList;
 
 public class ArgsCode extends ByteCode {
-    int numArgs;
+    private int numArgs;
 
     // Args ByteCode has 1 arg -> number of arguments in the activation frame
     @Override
