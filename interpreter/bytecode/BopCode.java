@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BopCode extends ByteCode {
-    String operation;
-    int firstOperand;
-    int secondOperand;
+    private String operation;
 
     // Bop ByteCode has 1 arg -> an operation in the form of a string
     @Override
@@ -19,22 +17,22 @@ public class BopCode extends ByteCode {
     // Bop ByteCode pops two values from the stack and performs an operation on them
     @Override
     public void execute(VirtualMachine vm) {
-        this.firstOperand = vm.pop();
-        this.secondOperand = vm.pop();
+        int firstOperand = vm.pop();
+        int secondOperand = vm.pop();
 
         HashMap<String, Integer> bopMap = new HashMap<>();
-        bopMap.put("+", this.firstOperand + this.secondOperand);
-        bopMap.put("-", this.firstOperand - this.secondOperand);
-        bopMap.put("/", this.firstOperand / this.secondOperand);
-        bopMap.put("*", this.firstOperand * this.secondOperand);
-        bopMap.put("==", (this.firstOperand == this.secondOperand) ? 1:0);
-        bopMap.put("!=", (this.firstOperand != this.secondOperand) ? 1:0);
-        bopMap.put("<=", (this.firstOperand <= this.secondOperand) ? 1:0);
-        bopMap.put(">", (this.firstOperand < this.secondOperand) ? 1:0);
-        bopMap.put(">=", (this.firstOperand >= this.secondOperand) ? 1:0);
-        bopMap.put("<", (this.firstOperand < this.secondOperand) ? 1:0);
-        bopMap.put("|", this.firstOperand | this.secondOperand);
-        bopMap.put("&", this.firstOperand & this.secondOperand);
+        bopMap.put("+", firstOperand + secondOperand);
+        bopMap.put("-", firstOperand - secondOperand);
+        bopMap.put("/", firstOperand / secondOperand);
+        bopMap.put("*", firstOperand * secondOperand);
+        bopMap.put("==", (firstOperand == secondOperand) ? 1:0);
+        bopMap.put("!=", (firstOperand != secondOperand) ? 1:0);
+        bopMap.put("<=", (firstOperand <= secondOperand) ? 1:0);
+        bopMap.put(">", (firstOperand < secondOperand) ? 1:0);
+        bopMap.put(">=", (firstOperand >= secondOperand) ? 1:0);
+        bopMap.put("<", (firstOperand < secondOperand) ? 1:0);
+        bopMap.put("|", firstOperand | secondOperand);
+        bopMap.put("&", firstOperand & secondOperand);
 
         vm.push(bopMap.get(this.operation));
     }
