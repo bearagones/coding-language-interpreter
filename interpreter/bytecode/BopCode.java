@@ -17,8 +17,8 @@ public class BopCode extends ByteCode {
     // Bop ByteCode pops two values from the stack and performs an operation on them
     @Override
     public void execute(VirtualMachine vm) {
-        int firstOperand = vm.pop();
         int secondOperand = vm.pop();
+        int firstOperand = vm.pop();
 
         HashMap<String, Integer> bopMap = new HashMap<>();
         bopMap.put("+", firstOperand + secondOperand);
