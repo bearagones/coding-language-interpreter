@@ -31,7 +31,7 @@ public class ReturnCode extends ByteCode {
     @Override
     public String toString() {
         if (this.label != null) {
-            return "RETURN " + this.label;
+            return "RETURN " + this.label + "\tEXIT " + this.id + ": " + temp;
         } else {
             return "RETURN";
         }
