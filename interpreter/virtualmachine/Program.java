@@ -32,30 +32,40 @@ public class Program {
         labelList = new HashMap<>();
 
         for (int i = 0; i < program.size(); i++) {
-            ByteCode placeholder = this.getCode(i);
-            if (placeholder instanceof LabelCode && !labelList.containsKey(((LabelCode) placeholder).getLabel())) {
-                labelList.put(((LabelCode) placeholder).getLabel(), i);
+            if (program.get(i) instanceof LabelCode) {
+                LabelCode labelCode = (LabelCode) program.get(i);
+                labelList.put(labelCode.getLabel(), i);
             }
         }
 
-        for (int i = 0; i < program.size(); i++) {
-            ByteCode placeholder = this.getCode(i);
-
-            if (placeholder instanceof CallCode && labelList.containsKey(((CallCode) placeholder).getLabel())) {
-                String[] function = ((CallCode) placeholder).getLabel().split("<");
-                ((CallCode) placeholder).setId(function[0]);
-                ((CallCode) placeholder).setAddress(labelList.get(((CallCode) placeholder).getLabel()));
+        for (ByteCode byteCode : program) {
+            if (byteCode instanceof CallCode) {
+                CallCode callCode = (CallCode) byteCode;
+                if (labelList.containsKey(callCode.getLabel())) {
+                    String[] function = callCode.getLabel().split("<");
+                    callCode.setId(function[0]);
+                    callCode.setAddress(labelList.get(callCode.getLabel()));
+                }
             }
-            else if (placeholder instanceof ReturnCode && !((ReturnCode) placeholder).getLabel().equals("") && labelList.containsKey(((ReturnCode) placeholder).getLabel())) {
-                String[] function = ((ReturnCode) placeholder).getLabel().split("<");
-                ((ReturnCode) placeholder).setId(function[0]);
-                ((ReturnCode) placeholder).setAddress(labelList.get(((ReturnCode) placeholder).getLabel()));
+            if (byteCode instanceof ReturnCode) {
+                ReturnCode returnCode = (ReturnCode) byteCode;
+                if (labelList.containsKey(returnCode.getLabel())) {
+                    String[] function = returnCode.getLabel().split("<");
+                    returnCode.setId(function[0]);
+                    returnCode.setAddress(labelList.get(returnCode.getLabel()));
+                }
             }
-            else if (placeholder instanceof GotoCode && labelList.containsKey(((GotoCode) placeholder).getLabel())) {
-                ((GotoCode) placeholder).setLabel(labelList.get(((GotoCode) placeholder).getLabel()));
+            if (byteCode instanceof GotoCode) {
+                GotoCode gotoCode = (GotoCode) byteCode;
+                if (labelList.containsKey(gotoCode.getLabel())) {
+                    gotoCode.setLabel(labelList.get(gotoCode.getLabel()));
+                }
             }
-            else if (placeholder instanceof FalseBranchCode && labelList.containsKey(((FalseBranchCode) placeholder).getLabel())) {
-                ((FalseBranchCode) placeholder).setLabel(labelList.get(((FalseBranchCode) placeholder).getLabel()));
+            if (byteCode instanceof FalseBranchCode) {
+                FalseBranchCode falseBranchCode = (FalseBranchCode) byteCode;
+                if (labelList.containsKey(falseBranchCode.getLabel())) {
+                    falseBranchCode.setLabel(labelList.get(falseBranchCode.getLabel()));
+                }
             }
         }
     }
