@@ -18,8 +18,8 @@ public class Program {
         return this.program.get(programCounter);
     }
 
-    public void addCode(ByteCode code) {
-        this.program.add(code);
+    public void addCode(ByteCode bc) {
+        this.program.add(bc);
     }
 
     /**
@@ -31,6 +31,7 @@ public class Program {
     public void resolveAddress() {
         labelList = new HashMap<>();
 
+        // First for-loop iterates through the program arraylist to keep track of the LabelCodes and their labels
         for (int i = 0; i < program.size(); i++) {
             if (program.get(i) instanceof LabelCode) {
                 LabelCode labelCode = (LabelCode) program.get(i);
@@ -38,6 +39,8 @@ public class Program {
             }
         }
 
+        // Second for-loop looks for an instance of CallCode/ReturnCode/GotoCode/FalseBranchCode
+        // and finds the matching label value our of the ones in the HashMap
         for (ByteCode byteCode : program) {
             if (byteCode instanceof CallCode) {
                 CallCode callCode = (CallCode) byteCode;
