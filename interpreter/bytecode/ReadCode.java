@@ -17,7 +17,7 @@ public class ReadCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter an integer: ");
+        System.out.print("Please enter an integer: ");
         this.userInput = scanner.nextInt();
         vm.push(this.userInput);
     }
