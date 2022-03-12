@@ -28,7 +28,9 @@ public class VirtualMachine {
         while (isRunning) {
             ByteCode code = program.getCode(programCounter);
             code.execute(this);
-            dump(code);
+            if (dumpStatus) {
+                dump(code);
+            }
             programCounter++;
         }
     }
@@ -41,7 +43,7 @@ public class VirtualMachine {
         if (dumpStatus && !(code instanceof DumpCode) && !(code instanceof HaltCode)) {
             System.out.println(code);
         }
-        this.runTimeStack.dump();
+        runTimeStack.dump();
     }
 
     public void dumpOn() {
