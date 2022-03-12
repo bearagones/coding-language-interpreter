@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class StoreCode extends ByteCode {
     int value;
     int offset;
+    int stored;
     String id;
 
     // Store ByteCode has 1 or 2 args -> offset value and (if present) variable
@@ -22,14 +23,14 @@ public class StoreCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         this.value = vm.peek();
-        vm.store(this.offset);
+        stored = vm.store(this.offset);
     }
 
     @Override
     public String toString() {
-        String base = "STORE ";
+        String base = "STORE " + this.offset;
         if (this.id != null) {
-            base += this.id;
+            base += " " + this.id + "\t" + this.id + " = " + this.stored;
         }
         return base;
     }
