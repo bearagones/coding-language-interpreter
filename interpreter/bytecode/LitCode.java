@@ -25,9 +25,9 @@ public class LitCode extends ByteCode {
 
     @Override
     public String toString() {
-        String base = "LIT " + this.value + " " + this.id;
+        String base = "LIT " + this.value + " ";
         if (this.id != null) {
-            base += "\t int " + this.id;
+            base += this.id + "\t int " + this.id;
         }
         return base;
     }
