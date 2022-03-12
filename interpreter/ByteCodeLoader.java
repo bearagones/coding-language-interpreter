@@ -71,6 +71,7 @@ public class ByteCodeLoader extends Object {
             System.exit(255);
         } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException ex) {
             System.out.println(ex);
+            ex.printStackTrace();
         }
 
         program.resolveAddress();
