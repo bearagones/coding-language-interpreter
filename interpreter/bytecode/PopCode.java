@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class PopCode extends ByteCode {
     int numValue;
+    int temp = 0;
 
     // Pop ByteCode has 1 arg -> # of values to remove from runtime stack
     @Override
@@ -16,8 +17,12 @@ public class PopCode extends ByteCode {
     // Pop ByteCode removes the number of values from the runtime stack
     @Override
     public void execute(VirtualMachine vm) {
-        for (int i = 1; i < this.numValue; i++) {
+        if (vm.frameSize() < numValue) {
+            numValue = vm.frameSize();
+        }
+        while (temp < this.numValue) {
             vm.pop();
+            temp++;
         }
     }
 
