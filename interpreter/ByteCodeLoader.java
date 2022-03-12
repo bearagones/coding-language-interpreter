@@ -38,7 +38,6 @@ public class ByteCodeLoader extends Object {
         String className;
         String byteCodeName;
         String[] items;
-        ArrayList<String> args = new ArrayList<>();
         Class classBlueprint;
         Program program = new Program();
         ByteCode bc;
@@ -58,6 +57,7 @@ public class ByteCodeLoader extends Object {
                 // create new instance of bytecode using constructor
                 bc = (ByteCode) classBlueprint.getDeclaredConstructor().newInstance();
                 // grab remaining arguments
+                ArrayList<String> args = new ArrayList<>();
                 for (int i = 1; i < items.length; i++) {
                     args.add(items[i]);
                 }
