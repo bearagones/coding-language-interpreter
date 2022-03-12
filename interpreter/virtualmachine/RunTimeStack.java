@@ -23,14 +23,16 @@ class RunTimeStack {
     public void dump() {
         String base = "[";
         int value;
+
         for (int i = 0; i < framePointer.size(); i++) {
             if (i > 0) {
                 base += "] [";
             }
+
             if (i != framePointer.size() - 1) {
                 value = framePointer.get(i + 1);
             } else {
-                value = framePointer.size();
+                value = runTimeStack.size();
             }
             for (int j = framePointer.get(i); j < value; j++) {
                 if (j == value - 1) {
