@@ -17,7 +17,7 @@ public class FalseBranchCode extends ByteCode {
     @Override
     public void execute(VirtualMachine vm) {
         if (vm.pop() == 0) {
-            vm.jumpTo(Integer.parseInt(label));
+            vm.jumpTo(Integer.parseInt(this.label));
         }
     }
 
