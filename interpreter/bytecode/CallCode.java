@@ -26,7 +26,7 @@ public class CallCode extends ByteCode {
 
     @Override
     public String toString() {
-        String base = "CALL " + label + " " + id + "(";
+        String base = "CALL " + label + "\t" + id + "(";
         for (int i = 0; i < values.size(); i++) {
             if (i == values.size() - 1) {
                 base += values.get(i);
