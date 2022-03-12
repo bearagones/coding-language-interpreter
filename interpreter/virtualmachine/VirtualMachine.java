@@ -90,10 +90,6 @@ public class VirtualMachine {
         programCounter = index;
     }
 
-    public int stackSize() {
-        return this.runTimeStack.stackSize();
-    }
-
     public int frameSize() {
         return this.runTimeStack.frameSize();
     }
