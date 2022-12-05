@@ -1,7 +1,5 @@
-# CSC 413 - Project Two - The Interpreter
+# Coding Language Interpreter
 
-## Student Name  : Beatrice Aragones
+## Description
 
-## Student ID    : 920614978
-
-## Student Email : baragones@mail.sfsu.edu
+This is a coding language interpreter that is used to interpret a language that is similar to Java, but simpler. 
